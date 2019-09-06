@@ -162,19 +162,8 @@ STAR --runThreadN 24 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix E8M
 
-# step5:（optional) UMI dedup (single-core)
-# step5.1 build bam index
-time samtools index E8M.Aligned.sortedByCoord.out.bam
-# step5.2 remove duplicates based on UMI
-time umi_tools dedup \
---stdin=E8M.Aligned.sortedByCoord.out.bam \
---output-stats=E8M \
---log=E8M.Aligned.sortedByCoord.out.dedup.log \
---per-cell \
-> E8M.Aligned.sortedByCoord.out.dedup.bam
-
-# step6: Assign reads to: (multi-cores)
-# step6.1 genes
+# step5: Assign reads to: (multi-cores)
+# step5.1 genes
 time featureCounts \
 -a ~/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf \
 --extraAttributes gene_id,gene_name,gene_type \
@@ -184,7 +173,7 @@ time featureCounts \
 mv E8M.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam E8M.gene_assigned.bam
 time samtools sort -@ 24 E8M.gene_assigned.bam -o E8M.gene_assigned.sorted.bam
 time samtools index E8M.gene_assigned.sorted.bam
-# step6.2 TEs
+# step5.2 TEs
 time featureCounts \
 -a ~/reference/mm10/Annotation/mm10_rmsk_TE.gtf \
 --extraAttributes gene_id,family_id,class_id \
@@ -195,14 +184,14 @@ mv E8M.Aligned.sortedByCoord.out.bam.featureCounts.bam E8M.TE_assigned.bam
 time samtools sort -@ 24 E8M.TE_assigned.bam -o E8M.TE_assigned.sorted.bam
 time samtools index E8M.TE_assigned.sorted.bam
 
-# step7: Count UMIs per gene per cell (single-core)
-# step7.1 for genes
+# step6: Count UMIs per gene per cell (single-core)
+# step6.1 for genes
 time umi_tools count \
 --per-gene --per-cell \
 --gene-tag=XT --assigned-status-tag=XS \
 -I E8M.gene_assigned.sorted.bam \
 -S E8M.gene_counts.tsv.gz
-# step7.2 for TE
+# step6.2 for TE
 time umi_tools count \
 --per-gene --per-cell \
 --gene-tag=XT --assigned-status-tag=XS \
@@ -226,9 +215,7 @@ time umi_tools count \
 
 #### 2. 是否需要去除duplicates (umi_tools dedup)？
 
-![](https://raw.githubusercontent.com/JarningGau/blog_images/master/20190821/scRNA-seq-pipeline-03.png)
-
-> ​	可以看出总体上讲，如果不做UMI dedup，软件会高估基因的表达量(dedup < dup，左上角)，尤其是对于高表达的基因更为明显。但是仍然有一些基因，dedup后的UMI counts反而增加了(dedup > dup，右下角)，目前还不知道原因。不做UMI dedup无非是为了**计算速度**考虑（UMI dedup是整个流程中最慢的一步，大约一个96细胞的文库需要3h），从这个结果上看，还是应该做一下UMI dedup。
+> ​	因为umi_tools count默认只统计不重复的UMI。因为目前无论是modified smart-seq2还是drop-based protocal，都是先扩增后断裂。因此map的坐标无法用来去重，重复的UMI意味着duplicates。因此，不需要进行dedup。
 
 #### 3. mapping到基因组上的reads中真正能定量到基因上的有大比例？
 
