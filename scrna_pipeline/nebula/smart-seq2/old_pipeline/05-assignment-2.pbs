@@ -1,0 +1,110 @@
+#!/bin/sh
+#PBS -N preprocess_s5-b2
+#PBS -o preprocess_s5-b2.log
+#PBS -e preprocess_s5-b2.err
+#PBS -q middle
+#PBS -l nodes=1:ppn=24
+#PBS -l mem=10G
+
+module load samtools
+module load Anaconda3
+
+cd /home/shiqinghua/gjn1106/pipeline/scrna
+echo "step5 Reads assignment, processing batch-2"
+
+echo "processing J3"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o J3.gene_assigned -R BAM J3.Aligned.sortedByCoord.out.dedup.bam
+rm J3.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing J4"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o J4.gene_assigned -R BAM J4.Aligned.sortedByCoord.out.dedup.bam
+rm J4.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing J5"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o J5.gene_assigned -R BAM J5.Aligned.sortedByCoord.out.dedup.bam
+rm J5.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing K1"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o K1.gene_assigned -R BAM K1.Aligned.sortedByCoord.out.dedup.bam
+rm K1.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing K2"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o K2.gene_assigned -R BAM K2.Aligned.sortedByCoord.out.dedup.bam
+rm K2.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing K3"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o K3.gene_assigned -R BAM K3.Aligned.sortedByCoord.out.dedup.bam
+rm K3.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing K4"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o K4.gene_assigned -R BAM K4.Aligned.sortedByCoord.out.dedup.bam
+rm K4.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing L1"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o L1.gene_assigned -R BAM L1.Aligned.sortedByCoord.out.dedup.bam
+rm L1.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing L2"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L2
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o L2.gene_assigned -R BAM L2.Aligned.sortedByCoord.out.dedup.bam
+rm L2.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing L3"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L3
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o L3.gene_assigned -R BAM L3.Aligned.sortedByCoord.out.dedup.bam
+rm L3.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing L5"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L5
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o L5.gene_assigned -R BAM L5.Aligned.sortedByCoord.out.dedup.bam
+rm L5.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing M1"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/M1
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o M1.gene_assigned -R BAM M1.Aligned.sortedByCoord.out.dedup.bam
+rm M1.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing M2"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/M2
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o M2.gene_assigned -R BAM M2.Aligned.sortedByCoord.out.dedup.bam
+rm M2.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing M4"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/M4
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o M4.gene_assigned -R BAM M4.Aligned.sortedByCoord.out.dedup.bam
+rm M4.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing N0a"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/N0a
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o N0a.gene_assigned -R BAM N0a.Aligned.sortedByCoord.out.dedup.bam
+rm N0a.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+
+echo "processing N0b"
+cd /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/N0b
+time featureCounts -a /home/shiqinghua/gjn1106/reference/mm10/Annotation/gencode.vM21.withERCC92.gtf --extraAttributes gene_id,gene_name,gene_type -T 24 -o N0b.gene_assigned -R BAM N0b.Aligned.sortedByCoord.out.dedup.bam
+rm N0b.Aligned.sortedByCoord.out.dedup.bam.featureCounts.bam
+
+

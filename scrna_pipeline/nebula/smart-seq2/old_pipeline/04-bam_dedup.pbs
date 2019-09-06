@@ -1,0 +1,17 @@
+#!/bin/sh
+#PBS -N preprocess_s4
+#PBS -o preprocess_s4.log
+#PBS -e preprocess_s4.err
+#PBS -q low
+#PBS -l nodes=1:ppn=20
+#PBS -l mem=10G
+
+module load samtools
+module load Anaconda3
+
+home=~/pipeline/scrna
+project=MouseGonocyte2019
+cd "$home/scripts"
+
+echo "step4: BAM dedup"
+time python 04-bam_dedup.py $home $project 20

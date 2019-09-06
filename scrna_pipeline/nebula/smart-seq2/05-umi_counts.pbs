@@ -1,0 +1,16 @@
+#!/bin/sh
+#PBS -N preprocess_s5
+#PBS -o preprocess_s5.log
+#PBS -e preprocess_s5.err
+#PBS -q low
+#PBS -l nodes=1:ppn=20
+#PBS -l mem=10G
+
+module load Anaconda3
+
+home=~/pipeline/scrna
+project=MouseGonocyte2019
+cd "$home/scripts"
+
+echo "step5 UMI count"
+time python 05-umi_counts.py $home $project 20
