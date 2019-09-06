@@ -1,0 +1,29 @@
+#!/bin/sh
+#PBS -N preprocess_s3-b3
+#PBS -o preprocess_s3-b3.log
+#PBS -e preprocess_s3-b3.err
+#PBS -q middle
+#PBS -l nodes=1:ppn=24
+#PBS -l mem=10G
+
+module load STAR
+
+cd /home/shiqinghua/gjn1106/pipeline/scrna
+echo "step3 STAR alignment, processing batch-3"
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4 
+
+STAR --runThreadN 24 --genomeDir /home/shiqinghua/gjn1106/reference/mm10/STARIndexERCC/gencode.vM21 --readFilesIn /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted_trimTSO_trimPolyA.fastq.gz --readFilesCommand zcat --outFilterMultimapNmax 50 --winAnchorMultimapNmax 50 --outSAMtype BAM SortedByCoordinate --outFileNamePrefix /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1 
+

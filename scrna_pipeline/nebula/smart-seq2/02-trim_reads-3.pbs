@@ -1,0 +1,53 @@
+#!/bin/sh
+#PBS -N preprocess_s2-b3
+#PBS -o preprocess_s2-b3.log
+#PBS -e preprocess_s2-b3.err
+#PBS -q low
+#PBS -l nodes=1:ppn=24
+#PBS -l mem=10G
+
+module load flexbar
+
+cd /home/shiqinghua/gjn1106/pipeline/scrna
+echo "step2 Trim reads on R1, processing batch-3"
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J3/J3_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J4/J4_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/J5/J5_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K1/K1_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K2/K2_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K3/K3_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/K4/K4_R1.clean.extracted_trimTSO.fastq
+
+
+time flexbar --adapter-min-overlap 7 --adapter-trim-end LEFT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/TSO.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted.fq.gz --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted_trimTSO
+time flexbar --adapter-min-overlap 7 --adapter-trim-end RIGHT --adapters /home/shiqinghua/gjn1106/pipeline/scrna/reference/adapters_polyAnT.fa --min-read-length 16 --threads 24 --reads /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted_trimTSO.fastq --target /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted_trimTSO_trimPolyA -z GZ
+rm /home/shiqinghua/gjn1106/pipeline/scrna/data/MouseGonocyte2019/L1/L1_R1.clean.extracted_trimTSO.fastq
+
+
